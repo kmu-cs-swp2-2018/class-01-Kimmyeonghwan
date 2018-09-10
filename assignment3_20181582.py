@@ -79,13 +79,12 @@ def doScoreDB(scdb):
 
         elif parse[0] == 'inc':
             try:
-                for i in range(len(scdb)):
-                    for j in scdb:
-                        if j['Name'] in parse[1]:
-                            j['Score'] = int(j['Score'])
-                            j['Score'] += int(parse[2])
-                            j['Score'] = str(j['Score'])
-                    break
+                for j in scdb:
+                    if j['Name'] in parse[1]:
+                        j['Score'] = int(j['Score'])
+                        j['Score'] += int(parse[2])
+                        j['Score'] = str(j['Score'])
+                continue
             except:
                 print("검색할 이름과 추가할 점수를 적어주세요.")
                 continue
@@ -95,13 +94,12 @@ def doScoreDB(scdb):
 
         elif parse[0] == 'exc':
             try:
-                for i in range(len(scdb)):
-                    for j in scdb:
-                        if j['Name'] in parse[1]:
-                            j['Score'] = int(j['Score'])
-                            j['Score'] -= int(parse[2])
-                            j['Score'] = str(j['Score'])
-                    break
+                for j in scdb:
+                    if j['Name'] in parse[1]:
+                        j['Score'] = int(j['Score'])
+                        j['Score'] -= int(parse[2])
+                        j['Score'] = str(j['Score'])
+                continue
             except:
                 print("검색할 이름과 뺄 점수를 적어주세요.")
                 continue
