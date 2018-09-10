@@ -78,34 +78,42 @@ def doScoreDB(scdb):
 
 
         elif parse[0] == 'inc':
-            try:
-                for j in scdb:
-                    if j['Name'] in parse[1]:
-                        j['Score'] = int(j['Score'])
-                        j['Score'] += int(parse[2])
-                        j['Score'] = str(j['Score'])
-                continue
-            except:
-                print("검색할 이름과 추가할 점수를 적어주세요.")
-                continue
-            else:
-                print("추가가 완료되었습니다.")
-                continue
+            for j in scdb:
+                if parse[1] == j['Name']:
+                    try:
+                        if j['Name'] in parse[1]:
+                            j['Score'] = int(j['Score'])
+                            j['Score'] += int(parse[2])
+                            j['Score'] = str(j['Score'])
+                            continue
+                    except:
+                        print("검색할 이름과 추가할 점수를 적어주세요.")
+                        continue
+                    else:
+                        print("점수 추가가 완료되었습니다.")
+                        continue
+                else:
+                    print("scdb에 없는 이름입니다.")
+                    continue
 
         elif parse[0] == 'exc':
-            try:
-                for j in scdb:
-                    if j['Name'] in parse[1]:
-                        j['Score'] = int(j['Score'])
-                        j['Score'] -= int(parse[2])
-                        j['Score'] = str(j['Score'])
-                continue
-            except:
-                print("검색할 이름과 뺄 점수를 적어주세요.")
-                continue
-            else:
-                print("빼기가 완료되었습니다.")
-                continue
+            for j in scdb:
+                try:
+                    if j['Name'] == parse[0]:
+                        if j['Name'] in parse[1]:
+                            j['Score'] = int(j['Score'])
+                            j['Score'] -= int(parse[2])
+                            j['Score'] = str(j['Score'])
+                            continue
+                    else:
+                        print("scdb에 존재하지 않는 이름입니다.")
+                except:
+                    print("검색할 이름과 뺄 점수를 적어주세요.")
+                    continue
+                else:
+                    print("점수 빼기가 완료되었습니다.")
+                    continue
+
 
 
         else:
