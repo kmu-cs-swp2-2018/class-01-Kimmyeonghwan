@@ -11,18 +11,23 @@ def seqsearch(nbrs, target):
 
 
 def recbinsearch(L, l, u, target):
+
     if l > u:
-        return None
+        return -1
 
     mid = int((l + u) // 2)
 
     if L[mid] == target:
         return mid
+
     elif L[mid] > target:
         u = mid - 1
+        return recbinsearch(L, l, u, target)
+
     else:
         l = mid + 1
-    return -1
+        return recbinsearch(L, l, u, target)
+
 
 
 numofnbrs = int(input("Enter a number: "))
