@@ -9,11 +9,19 @@ def fibonacci(n):
 
 
 def iterfibo(n):
-    f = list()
+    '''f = list()
     for i in range(n + 1):
         f.append(fibonacci(i))
-    return f
+    return f'''
 
+    f = 0
+    s = 1
+    if n <= 1:
+        return n
+    else:
+        for i in range(n):
+            f, s = s, f + s
+        return f
 
 while True:
     nbr = int(input("Enter a number: "))
