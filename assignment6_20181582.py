@@ -75,7 +75,6 @@ class ScoreDB(QWidget):
         hbox.addWidget(self.Score_text)
 
         vbox = QVBoxLayout()
-        vbox.addStretch(1)
         vbox.addLayout(hbox)
 
         hbox2 = QHBoxLayout()
@@ -168,7 +167,6 @@ class ScoreDB(QWidget):
     def doScoreDB_Inc(self):
         for dic in self.scoredb:
             if dic['Name'] == self.Name_text.text():
-                dic['Score'] = int(dic['Score'])
                 dic['Score'] += int(self.Amount_text.text())
         self.showScoreDB()
 
