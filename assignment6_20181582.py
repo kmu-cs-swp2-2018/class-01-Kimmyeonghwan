@@ -136,7 +136,7 @@ class ScoreDB(QWidget):
         # Add 버튼을 눌렀을 때 이벤트 신호 받음.
 
     def doScoreDB_Add(self):
-        record = {'Name': self.Name_text.text(), 'Age': int(self.Age_text.text()), 'Score': int(self.Score_text.text())}
+        record = {'Name': self.Name_text.text(), 'Age': self.Age_text.text(), 'Score': self.Score_text.text()}
         self.scoredb += [record]
         for dic in self.scoredb:
             dic['Age'] = int(dic['Age'])
