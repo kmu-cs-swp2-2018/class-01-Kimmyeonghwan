@@ -146,9 +146,10 @@ class ScoreDB(QWidget):
         # Del 버튼을 눌렀을 때 이벤트 신호 받음.
 
     def doScoreDB_Del(self):
-        for dic in self.scoredb:
-            if dic['Name'] == self.Name_text.text():
-                self.scoredb.remove(dic)
+        for re in range(len(self.scoredb)):
+            for dic in self.scoredb:
+                if dic['Name'] == self.Name_text.text():
+                    self.scoredb.remove(dic)
         self.showScoreDB()
 
         # Find 버튼을 눌렀을 때 이벤트 신호 받음.
