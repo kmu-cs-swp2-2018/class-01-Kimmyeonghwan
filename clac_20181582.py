@@ -90,6 +90,7 @@ class Calculator(QWidget):
             except:
                 result = 'Error!'
             self.display.setText(result)
+
         elif key == 'C':
             self.display.clear()
 
@@ -105,24 +106,6 @@ class Calculator(QWidget):
                 result = 'Error!'
             self.display.setText(result)
 
-            '''
-        elif key == functionList[0]:
-            n = self.display.text()
-            value = factorial(n)
-            self.display.setText(str(value))
-        elif key == functionList[1]:
-            n = self.display.text()
-            value = decToBin(n)
-            self.display.setText(str(value))
-        elif key == functionList[2]:
-            n = self.display.text()
-            value = binToDec(n)
-            self.display.setText(str(value))
-        elif key == functionList[3]:
-            n = self.display.text()
-            value = decToRoman(n)
-            self.display.setText(str(value))
-            '''
         else:
             self.display.setText(self.display.text() + key)
 
