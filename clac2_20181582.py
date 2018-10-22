@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QLayout, QGridLayout
 
 # 불필요한 반복 줄이기.
 from keypad import numPadList, operatorList, constantList, functionList
-from calcFunctions import factorial, decToBin, binToDec, decToRoman, sum
+from calcFunctions import factorial, decToBin, binToDec, decToRoman, act
 #from display import display
 
 class Button(QToolButton):
@@ -100,7 +100,7 @@ class Calculator(QWidget):
             try:
                 num = functionList[key]
                 numStr = str(eval(self.display.text()))
-                result = sum(num, numStr)
+                result = act(num, numStr)
             except:
                 result = 'Error!'
             self.display.setText(result)

@@ -27,7 +27,7 @@ def binToDec(numStr):
 def decToRoman(numStr):
     return 'dec -> Roman'
 
-def sum(num,numStr):
+def act(num,numStr):
     if num == 0:
         return factorial(numStr)
 
