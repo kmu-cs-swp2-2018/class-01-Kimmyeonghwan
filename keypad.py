@@ -24,4 +24,5 @@ functionList = {
     '-> binary' : 1,
     'binary -> dec' : 2,
     '-> roman' : 3,
+    'roman -> dec' : 4,
 }

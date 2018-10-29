@@ -81,6 +81,9 @@ class Calculator(QWidget):
         if self.display.text() == 'Error!':
             self.display.setText('')
 
+        if self.display.text() == "0":
+            self.display.clear()
+
         button = self.sender()
         key = button.text()
 
@@ -100,7 +103,10 @@ class Calculator(QWidget):
         elif key in functionList:
             try:
                 num = functionList[key]
-                numStr = str(eval(self.display.text()))
+                if num == 4:
+                    numStr = str(self.display.text())
+                else:
+                    numStr = str(eval(self.display.text()))
                 result = act(num, numStr)
             except:
                 result = 'Error!'
@@ -108,6 +114,8 @@ class Calculator(QWidget):
 
         else:
             self.display.setText(self.display.text() + key)
+
+
 
 
 if __name__ == '__main__':
