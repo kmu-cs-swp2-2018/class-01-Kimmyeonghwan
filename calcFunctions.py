@@ -110,6 +110,22 @@ def romanToDec(numStr):
 
 
 '''
+     for i in range(len(numStr)):
+        if numStr[i] == romans[i][1]:
+            r += numBreak[i]
+        
+        elif numStr[i:i+2] == romans[i][1]:
+            r += numBreak[i+1]
+            i += 1
+
+
+
+
+
+
+
+
+
     for i in range(len(numStr)):
         for j in range(12):
             try:
