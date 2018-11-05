@@ -4,6 +4,7 @@ class Guess:
         self.numTries = 0
         self.guessedChars = []
         self.secretWord = word
+        self.life = 0
         # 사용자 편의를 위해 - 를 _ 로 변경
         self.currentStatus = "_"*len(self.secretWord)
 
@@ -19,13 +20,12 @@ class Guess:
         if character not in self.guessedChars:
             self.guessedChars.append(character)
 
-        # 단어가 정답의 단어와 다르면 시도 횟수 + 1
+        # 단어가 정답의 단어와 다르면 목숨 -1
         if character not in self.secretWord:
-            self.numTries += 1
+            self.life += 1
 
         # 단어가 정답의 단어와 같으면
         else:
-            self.numTries += 1
             for i in range(len(self.secretWord)):
                 if self.secretWord[i] == character:
                     self.currentStatus = self.currentStatus[:i] + character + self.currentStatus[i+1:]
@@ -33,4 +33,5 @@ class Guess:
             # 단어를 다 맞추면 True 리턴
             if self.secretWord == self.currentStatus:
                 return True
+        self.numTries = len(self.guessedChars)
 # 모델

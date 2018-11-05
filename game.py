@@ -11,10 +11,10 @@ def gameMain():
     hangman = Hangman()
     maxTries = hangman.getLife()
 
-    while guess.numTries < maxTries:
+    while guess.life < maxTries:
 
         # 목숨(단두대)
-        display = hangman.get(maxTries - guess.numTries)
+        display = hangman.get(maxTries - guess.life)
         print(display)
         guess.display()
 
@@ -40,8 +40,9 @@ def gameMain():
         print('Success')
     else:
         print(hangman.get(0))
-        print('word [' + guess.secretWord + ']')
-        print('guess [' + guess.currentStatus + ']')
+        print('word [{}]'.format(guess.secretWord))
+        print('guess {}'.format(guess.guessedChars))
+        print('Tries : {}'.format(guess.numTries))
         print('Fail')
 
 
