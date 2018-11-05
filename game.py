@@ -6,7 +6,7 @@ from word import Word
 def gameMain():
     word = Word('words.txt')
     guess = Guess(word.randFromDB())
-
+    english = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
     finished = False
     hangman = Hangman()
     maxTries = hangman.getLife()
@@ -20,9 +20,14 @@ def gameMain():
 
         guessedChar = input('Select a letter: ')
 
-        # 영어 1개만 입력
+        # 글자 1개만 입력
         if len(guessedChar) != 1:
             print('One character at a time!')
+            continue
+
+        # 영어 소문자만 입력 받기
+        if guessedChar not in english:
+            print("Only english! and Only small letter!!")
             continue
 
         # 이미 입력한 단어 다시 입력 방지 (guessedChar은 입력했던 단어들)
