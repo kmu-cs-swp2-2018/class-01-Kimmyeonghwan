@@ -103,4 +103,4 @@ class Hangman:
     def get(self, life):
         return self.text[life]
 
-# 뷰
+# 뷰?
