@@ -96,11 +96,14 @@ class Hangman:
     ]
 
 
-    def getLife(self):
-        return len(self.text) - 1
+    def __init__(self):
+        self.life = len(self.text) - 1
+
+    def decreaseLife(self):
+        self.life -= 1
 
 
-    def get(self, life):
-        return self.text[life]
+    def currentShape(self):
+        return self.text[self.life]
 
 # 모델

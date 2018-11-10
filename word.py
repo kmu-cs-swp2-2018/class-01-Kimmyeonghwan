@@ -20,7 +20,7 @@ class Word:
         print('%d words in DB' % self.count)
 
 
-    # 이건 뭐지?
+    # 테스트 케이스를 위해 작성
     def test(self):
         return 'default'
 

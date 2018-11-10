@@ -19,8 +19,6 @@ class Guess:
         # 단어가 추측했던 단어(guessedChars)에 없다면 추가
         if character not in self.guessedChars:
             self.guessedChars.append(character)
-        
-        self.numTries = len(self.guessedChars)
 
         # 단어가 정답의 단어와 다르면 목숨 -1
         if character not in self.secretWord:
@@ -35,4 +33,4 @@ class Guess:
             # 단어를 다 맞추면 True 리턴
             if self.secretWord == self.currentStatus:
                 return True
-# 모델
+        self.numTries = len(self.guessedChars)
