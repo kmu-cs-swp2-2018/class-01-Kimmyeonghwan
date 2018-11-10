@@ -34,6 +34,29 @@ class TestGuess(unittest.TestCase):
         self.g1.guess('d')
         self.assertListEqual(['a', 'd', 't', 'u'], self.g1.displayGuessed())
 
+    def testFinished(self):
+        self.g1.guess('d')
+        self.assertFalse(self.g1.finished())
+        self.g1.guess('e')
+        self.assertFalse(self.g1.finished())
+        self.g1.guess('f')
+        self.assertFalse(self.g1.finished())
+        self.g1.guess('a')
+        self.assertFalse(self.g1.finished())
+        self.g1.guess('u')
+        self.assertFalse(self.g1.finished())
+        self.g1.guess('l')
+        self.assertFalse(self.g1.finished())
+        self.g1.guess('t')
+        self.assertTrue(self.g1.finished())
+
+    def testGuess(self):
+        self.assertTrue(self.g1.guess('d'))
+        self.assertFalse(self.g1.guess('z'))
+        self.assertTrue(self.g1.guess('e'))
+        self.assertFalse(self.g1.guess('q'))
+        self.assertTrue(self.g1.guess('f'))
+        self.assertFalse(self.g1.guess('v'))
 
 
 if __name__ == '__main__':
