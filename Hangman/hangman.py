@@ -106,4 +106,3 @@ class Hangman:
     def currentShape(self):
         return self.text[self.life]
 
-# 모델

@@ -29,4 +29,3 @@ class Word:
         r = random.randrange(self.count)
         return self.words[r]
 
-# 모델

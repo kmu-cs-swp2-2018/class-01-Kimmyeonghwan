@@ -1,9 +1,9 @@
 import unittest
 
-from guess import Guess
+from Hangman.guess import Guess
 
 class TestGuess(unittest.TestCase):
-
+    # 초기 설정!
     def setUp(self):
         self.g1 = Guess('default')
 

@@ -3,7 +3,6 @@ class Guess:
     def __init__(self, word):
         self.numTries = 0
         self.secretWord = word
-        self.life = 0
         # 사용자 편의를 위해 - 를 _ 로 변경
         self.currentStatus = "_"*len(self.secretWord)
         # 집합 vs 리스트, 리스트에 append 해주는 방식을 이용함. 코드 간결화

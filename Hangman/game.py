@@ -1,6 +1,6 @@
-from hangman import Hangman
-from guess import Guess
-from word import Word
+from Hangman.hangman import Hangman
+from Hangman.guess import Guess
+from Hangman.word import Word
 
 
 def gameMain():
