@@ -29,3 +29,7 @@ class Word:
         r = random.randrange(self.count)
         return self.words[r]
 
+    # 랜덤 범위 테스트를 위해 작성
+    def testRandFromDB(self):
+        return random.randrange(self.count)
+
