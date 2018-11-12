@@ -6,7 +6,6 @@ from Hangman.word import Word
 def gameMain():
     word = Word('words.txt')
     guess = Guess(word.randFromDB())
-    english = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
     hangman = Hangman()
 
     while hangman.life > 0:
@@ -25,19 +24,22 @@ def gameMain():
         print(guess.secretWord)
         guessedChar = input('Select a letter: ')
 
-        # 글자 1개만 입력
-        if len(guessedChar) != 1:
-            print('One character at a time!')
+
+        # 해당 부분을 guess로 이동.
+        error = guess.oneChar(guessedChar)
+        if error == False:
             continue
 
-        # 영어 소문자만 입력 받기
-        if guessedChar not in english:
-            print("Only english! and Only small letter!!")
+        error = guess.smallLetterChar(guessedChar)
+        if error == False:
             continue
 
-        # 이미 입력한 단어 다시 입력 방지 (guessedChar은 입력했던 단어들)
-        if guessedChar in guess.guessedChars:
-            print('You already guessed \"' + guessedChar + '\"')
+        error = guess.smallLetterChar(guessedChar)
+        if error == False:
+            continue
+
+        error = guess.alreadyChar(guessedChar)
+        if error == False:
             continue
 
 
@@ -68,6 +70,3 @@ def gameMain():
 
 if __name__ == '__main__':
     gameMain()
-
-
-# 컨트롤러

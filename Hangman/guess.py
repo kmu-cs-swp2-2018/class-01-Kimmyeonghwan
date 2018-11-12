@@ -7,6 +7,7 @@ class Guess:
         self.currentStatus = "_"*len(self.secretWord)
         # 집합 vs 리스트, 리스트에 append 해주는 방식을 이용함. 코드 간결화
         self.guessedChars = []
+        self.english = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 
 
@@ -31,6 +32,32 @@ class Guess:
             return True
         else:
             return False
+
+
+    def oneChar(self, char):
+        # 글자 1개만 입력
+        if len(char) != 1:
+            print('One character at a time!')
+            return False
+        else:
+            return True
+
+    def smallLetterChar(self, char):
+        # 영어 소문자만 입력
+        if char not in self.english:
+            print("Only english! and Only small letter!!")
+            return False
+        else:
+            return True
+
+    def alreadyChar(self, char):
+        # 이미 입력한 단어 다시 입력 방지 (guessedChar은 입력했던 단어들)
+        if char in self.guessedChars:
+            print('You already guessed \"' + char + '\"')
+            return False
+        else:
+            return True
+
 
     def displayCurrent(self):
         return self.currentStatus
