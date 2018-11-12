@@ -6,6 +6,7 @@ class TestGuess(unittest.TestCase):
     # 초기 설정!
     def setUp(self):
         self.g1 = Guess('default')
+        self.g2 = Guess('original')
 
     def tearDown(self):
         pass
@@ -21,6 +22,16 @@ class TestGuess(unittest.TestCase):
         # 한글 입력 방지 확인
         self.g1.guess('ㅁ')
         self.assertEqual(self.g1.displayCurrent(), '___au_t')
+
+        # g2로 실험
+        self.assertEqual(self.g2.displayCurrent(), '________')
+        self.g2.guess('a')
+        self.assertEqual(self.g2.displayCurrent(), '______a_')
+        self.g2.guess('i')
+        self.assertEqual(self.g2.displayCurrent(), '__i_i_a_')
+        self.g2.guess('o')
+        self.assertEqual(self.g2.displayCurrent(), 'o_i_i_a_')
+
 
     def testDisplayGuessed(self):
 
@@ -57,6 +68,36 @@ class TestGuess(unittest.TestCase):
         self.assertFalse(self.g1.guess('q'))
         self.assertTrue(self.g1.guess('f'))
         self.assertFalse(self.g1.guess('v'))
+
+    def testOneChar(self):
+        self.assertTrue(self.g1.oneChar('a'))
+        self.assertFalse(self.g1.oneChar('dsadawdqeqdsadawd'))
+        self.assertTrue(self.g2.oneChar('z'))
+        self.assertFalse(self.g2.oneChar(''))
+
+    def testSmallLetterChar(self):
+        self.assertTrue(self.g1.smallLetterChar('a'))
+        self.assertFalse(self.g1.smallLetterChar('종강종강종강종강종강종강종강'))
+        self.assertFalse(self.g1.smallLetterChar('A'))
+        self.assertTrue(self.g2.smallLetterChar('z'))
+        self.assertFalse(self.g2.smallLetterChar(''))
+
+
+    def testalreadyChar(self):
+        self.assertTrue(self.g1.alreadyChar('u'))
+        self.g1.guess('u')
+        self.assertFalse(self.g1.alreadyChar('u'))
+        self.assertTrue(self.g1.alreadyChar('v'))
+        self.g1.guess('v')
+        self.assertFalse(self.g1.alreadyChar('v'))
+        self.assertTrue(self.g2.alreadyChar('q'))
+        self.g2.guess('q')
+        self.assertFalse(self.g2.alreadyChar('q'))
+        self.assertTrue(self.g2.alreadyChar('p'))
+        self.g2.guess('p')
+        self.assertFalse(self.g2.alreadyChar('p'))
+
+
 
 
 if __name__ == '__main__':
