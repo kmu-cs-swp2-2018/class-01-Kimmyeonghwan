@@ -106,3 +106,5 @@ class Hangman:
     def currentShape(self):
         return self.text[self.life]
 
+    def getRemainingLives(self):
+        return self.life

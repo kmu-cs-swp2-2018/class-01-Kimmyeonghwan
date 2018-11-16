@@ -5,14 +5,13 @@ class Guess:
         self.secretWord = word
         # 사용자 편의를 위해 - 를 _ 로 변경
         self.currentStatus = "_"*len(self.secretWord)
-        # 집합 vs 리스트, 리스트에 append 해주는 방식을 이용함. 코드 간결화
-        self.guessedChars = []
+        self.guessedChars = {''}
         self.english = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 
 
     def guess(self, character):
-        self.guessedChars.append(character)
+        self.guessedChars |= {character}
         self.numTries = len(self.guessedChars)
 
         # 단어가 정답의 단어와 다르면 False 리턴
@@ -58,10 +57,20 @@ class Guess:
         else:
             return True
 
+    def blankSpacebarChar(self, char):
+        if char == "" or char == " " :
+            print("You shouldn't Blank and Spacebar!!!!!!!")
+            return False
+        else:
+            return True
+
 
     def displayCurrent(self):
         return self.currentStatus
 
 
     def displayGuessed(self):
-        return sorted(self.guessedChars)
+        guessed = ''
+        for c in sorted(list(self.guessedChars)):
+            guessed += (c + ' ')
+        return guessed

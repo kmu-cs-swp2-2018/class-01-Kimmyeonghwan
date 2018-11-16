@@ -20,16 +20,15 @@ class Word:
         print('%d words in DB' % self.count)
 
 
-    # 테스트 케이스를 위해 작성
+    # 이건 뭐지?
     def test(self):
         return 'default'
 
     # 랜덤 난수로 단어 고르기
     def randFromDB(self):
         r = random.randrange(self.count)
-        return self.words[r]
-
-    # 랜덤 범위 테스트를 위해 작성
-    def testRandFromDB(self):
-        return random.randrange(self.count)
-
+        # 문자열 길이가 너무 길어 화면이 넘어가는 단어가 뽑히면 다시 뽑도록 설정.
+        if len(self.words[r]) <= 16:
+            return self.words[r]
+        else:
+            return self.randFromDB()
