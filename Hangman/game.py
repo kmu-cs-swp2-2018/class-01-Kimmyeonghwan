@@ -154,6 +154,7 @@ class HangmanGame(QWidget):
         if self.guess.finished():
 
             # 메시지 ("Success!") 출력하고, self.gameOver 는 True 로
+            self.message.setText("Success!")
             print("============================")
             print("Success")
             print("Tries : {}".format(self.guess.numTries))
@@ -164,6 +165,7 @@ class HangmanGame(QWidget):
 
         elif self.hangman.getRemainingLives() == 0:
             # 메시지 ("Fail!" + 비밀 단어) 출력하고, self.gameOver 는 True 로
+            self.message.setText("Fail! SecreWord is {}".format(self.guess.secretWord))
             print("============================")
             print('Fail')
             print('SecretWord is [{}]'.format(self.guess.secretWord))
