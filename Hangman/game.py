@@ -57,6 +57,8 @@ class HangmanGame(QWidget):
         # Input widget for user selected characters
         self.charInput = QLineEdit()
         self.charInput.setMaxLength(1)
+        # 엔터키 눌러도 됨.
+        self.charInput.returnPressed.connect(self.guessClicked)
         statusLayout.addWidget(self.charInput, 3, 0)
 
         # Button for submitting a character
@@ -89,6 +91,9 @@ class HangmanGame(QWidget):
         self.hangman = Hangman()
         self.guess = Guess(self.word.randFromDB())
         self.gameOver = False
+        # 방법2. 단어의 길이가 길어서 다 보이지 않을 때, QLineEdit 길이 늘리기.
+        if (len(self.guess.secretWord) >= 16):
+            self.currentWord.setFixedWidth(15 * (len(self.guess.secretWord)))
 
         self.hangmanWindow.setPlaceholderText(self.hangman.currentShape())
         self.currentWord.setText(self.guess.displayCurrent())
